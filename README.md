@@ -76,6 +76,9 @@ go run ./cmd/api/main.go
 ### Run Frontend
 
 ```bash
+cd frontend
 npm install
 npm run dev
 ```
+
+> Or from the project root: `npm run dev`

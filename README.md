@@ -1,32 +1,81 @@
-# React + TypeScript + Vite
+# Villva Workspace
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A full-stack workspace management platform built with React and Go.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
 
-## React Compiler
+### Frontend
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Layer | Technology |
+|---|---|
+| Framework | React 19 |
+| Language | TypeScript |
+| Build Tool | Vite 8 |
+| Styling | Tailwind CSS v4 |
+| UI Components | shadcn/ui + Base UI |
+| Routing | React Router v7 |
+| State Management | Zustand |
+| Server State / API | TanStack Query (React Query) |
+| Tables | TanStack Table |
+| Forms | React Hook Form + Zod (validation) |
+| Charts | Recharts |
+| HTTP Client | Axios |
+| Icons | Lucide React |
+| Font | Geist Variable |
+| Linter | OxLint |
 
-## Expanding the Oxlint configuration
+### Backend
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+| Layer | Technology |
+|---|---|
+| Language | Go 1.26 |
+| Web Framework | Gin |
+| ORM | GORM |
+| Authentication | JWT (golang-jwt) |
+| Authorization | Casbin (RBAC/ABAC) |
+| Background Jobs | Asynq (Redis-backed task queue) |
+| File Storage | MinIO (S3-compatible) |
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+### Infrastructure / Database
+
+| Layer | Technology |
+|---|---|
+| Primary Database | PostgreSQL 15 |
+| Cache / Queue | Redis 7 |
+| Object Storage | MinIO |
+| Containerization | Docker Compose |
+| Email | SMTP |
+
+> React + TypeScript frontend talking to a Go REST API, backed by PostgreSQL for data, Redis for job queues/cache, and MinIO for file storage. All services run via Docker Compose.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 20+
+- Go 1.26+
+- Docker & Docker Compose
+
+### Run Infrastructure
+
+```bash
+docker-compose up -d
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### Run Backend
+
+```bash
+cd backend-go
+go run ./cmd/api/main.go
+```
+
+### Run Frontend
+
+```bash
+npm install
+npm run dev
+```

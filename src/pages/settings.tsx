@@ -14,7 +14,7 @@ export function SettingsPage() {
 
   const [profileData, setProfileData] = useState({
     name: user?.name || "",
-    mobile: user?.mobile || "",
+    mobile: (user as any)?.mobile || "",
     profilePicture: (user as any)?.profilePicture || ""
   });
   

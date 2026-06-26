@@ -39,7 +39,7 @@ function SidebarItem({ icon: Icon, title, href, isActive }: { icon: any, title: 
 
   return (
     <div className="w-full">
-      <Tooltip delayDuration={0}>
+      <Tooltip>
         <TooltipTrigger render={linkContent} />
         <TooltipContent side="right" className="group-hover:hidden hidden sm:block">
           {title}
@@ -154,7 +154,7 @@ export function Sidebar({ isMobile = false }: { isMobile?: boolean }) {
         <div className="mt-auto border-t p-3 space-y-1">
           <SidebarItem icon={Settings} title="Settings" href="/settings" isActive={location.pathname === '/settings'} />
           <div className="w-full">
-            <Tooltip delayDuration={0}>
+            <Tooltip>
               <TooltipTrigger render={
                 <button
                   onClick={logout}
